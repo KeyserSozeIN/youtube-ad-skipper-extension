@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Ad Skipper Pro",
+  "version": "2.0",
+  "description": "Skips all ads on YouTube automatically with pro features.",
+  "permissions": ["tabs", "scripting", "storage"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-skipper": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      },
+      "description": "Toggle YouTube Ad Skipper"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.png"
+    }
+  },
+  "icons": {
+    "48": "icon.png"
+  }
+}
